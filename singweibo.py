@@ -149,5 +149,5 @@ class Launcher:
 
 
 if __name__ == '__main__':
-    a = Launcher('15837562085', '734190426l')
+    a = Launcher('username', 'passward')
     a.login()
