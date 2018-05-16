@@ -21,8 +21,8 @@ data = {
     'commit': 'Sign in',
     'utf8': '✓',
     'authenticity_token': authenticity_token,
-    'login': '734190426@qq.com',
-    'password': '734190426l'
+    'login': username,
+    'password': password
 }
 
 headers = {
