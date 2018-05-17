@@ -262,6 +262,6 @@ class Launcher:
 
 # 执行主程序
 if  __name__ == '__main__':
-    a = Launcher('15837562085','734190426l')
+    a = Launcher('xxxx','xxxx')
     print(u"欢迎%s,您正在使用lgy编写的模拟登陆百度程序！"% a.username)
     a.login()
