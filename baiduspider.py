@@ -110,10 +110,18 @@ class Launcher:
         global init_time
         # init_time 参数的获取方法同样由js代码规定 python中返回的是浮点数秒
         init_time = str(int(time.time() * 1000))
-        token_url = "https://passport.baidu.com/v2/api/?getapi&tpl=mn&apiver=v3&tt="
-        token_url = token_url + init_time + "&class=login&gid="
-        token_url = token_url + gid + "&loginversion=v4&logintype=dialogLogin&traceid=&callback="
-        token_url = token_url + callback
+        params = {
+            'tpl': 'mn',
+            'apiver': 'v3',
+            'tt': init_time,
+            'class': 'login',
+            'gid': gid,
+            'loginversion': 'v4',
+            'logintype': 'dialogLogin',
+            'traceid': '',
+            'callback': callback
+        }
+        token_url = "https://passport.baidu.com/v2/api/?getapi&{}".format(urllib.parse.urlencode(params))
         token_html = session.get(url=token_url, headers=headers)
         token_content = token_html.text.replace(callback,'')
         token_content = eval(token_content)
@@ -124,10 +132,17 @@ class Launcher:
         callback = self.get_callback()
         gid = self.get_gid()
         init_time = str(int(time.time() * 1000))
-        pubkey_url = "https://passport.baidu.com/v2/getpublickey?token="
-        pubkey_url = pubkey_url + token + "&tpl=mn&apiver=v3&tt="
-        pubkey_url = pubkey_url + init_time + "&gid="
-        pubkey_url = pubkey_url + gid + "&loginversion=v4&traceid=&callback=" + callback
+        params = {
+            'token': token,
+            'tpl': 'mn',
+            'apiver': 'v3',
+            'tt': init_time,
+            'gid': gid,
+            'loginversion': 'v4',
+            'traceid': '',
+            'callback': callback
+        }
+        pubkey_url = "https://passport.baidu.com/v2/getpublickey?{}".format(urllib.parse.urlencode(params))
         # 更换headers信息中的referer
         headers['Referer'] = 'https://www.baidu.com/?tn=78000241_9_hao_pg'
         pubkey_html = session.get(url=pubkey_url, headers=headers)
@@ -247,6 +262,6 @@ class Launcher:
 
 # 执行主程序
 if  __name__ == '__main__':
-    a = Launcher('username','password')
+    a = Launcher('15837562085','734190426l')
     print(u"欢迎%s,您正在使用lgy编写的模拟登陆百度程序！"% a.username)
     a.login()
