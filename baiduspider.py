@@ -1,10 +1,4 @@
 # coding = utf-8
-"""
-进行百度的模拟登陆过程
-较模拟登陆新浪微博的不同点在于实现了图形验证码的识别
-目的在于巩固爬虫知识
-"""
-
 import requests
 import rsa
 import json
@@ -260,7 +254,7 @@ class Launcher:
             f.write(html_index.content)
             f.close()
 
-# 执行主程序 
+# 执行主程序
 if  __name__ == '__main__':
     a = Launcher('xxxx','xxxx')
     print(u"欢迎%s,您正在使用lgy编写的模拟登陆百度程序！"% a.username)
