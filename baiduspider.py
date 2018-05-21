@@ -184,11 +184,6 @@ class Launcher:
 
     # 获取验证码图片 利用上面获得codestring参数构建新的url地址
     def get_image(self, token,codestring):
-        headers1 = {
-            'Host': 'passport.baidu.com',
-            'Referer': 'https://www.baidu.com/',
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.162 Safari/537.36'
-        }
         image_url = "https://passport.baidu.com/cgi-bin/genimage?" + codestring#self.get_codingstring(token)
         headers['Referer'] = 'https://www.baidu.com/?tn=78000241_9_hao_pg'
         cha_page = session.get(image_url, headers=headers)
